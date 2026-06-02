@@ -492,14 +492,9 @@ export default function BentoGrid() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => {
-                if (zoomState.scale === 1) {
-                  setActiveImageIndex(null);
-                }
+                setActiveImageIndex(null);
               }}
-              className="fixed inset-0 z-[100] bg-black/98 flex items-center justify-center p-4 backdrop-blur-lg select-none"
-              style={{
-                cursor: zoomState.scale === 1 ? "zoom-out" : "default"
-              }}
+              className="fixed inset-0 z-[100] bg-black/98 flex items-center justify-center p-4 backdrop-blur-lg select-none cursor-zoom-out"
             >
               {/* Visual Hint Badge */}
               <AnimatePresence>
@@ -515,18 +510,6 @@ export default function BentoGrid() {
                   </motion.div>
                 )}
               </AnimatePresence>
-
-              {/* Close Button - Google standard 48px touch target */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveImageIndex(null);
-                }}
-                className="absolute top-6 right-6 md:top-8 md:right-8 z-[110] bg-white/10 hover:bg-white text-white hover:text-black w-12 h-12 flex items-center justify-center rounded-full transition-colors border border-white/10 shadow-2xl cursor-pointer"
-                aria-label="Close Gallery"
-              >
-                <X size={20} />
-              </button>
 
               {/* Left/Right Buttons - Subtle 48px Touch Controls */}
               <button
